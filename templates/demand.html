@@ -1,9 +1,10 @@
+{% extends "main.html" %}
 {% load static %}
-<!doctype html>
-<html lang="ru">
+<title>Востребованность</title>
+
+{% block content %}
 <head>
     <meta charset="UTF-8">
-    <title>Востребовательность</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;700&display=swap" rel="stylesheet">
@@ -15,9 +16,9 @@
         }
     </style>
 </head>
-<body style="font-family: 'Lora', sans-serif; padding: 0 15px; background-color: lightskyblue">
+<body style="font-family: 'Lora', sans-serif; padding: 0 15px">
     <h1 style="text-align: center">Аналитика по зарплатам и городам для профессии {{ name }}</h1>
-    <img src= "{% static "/graph.png" %}" alt="graph" >
+    <img src= "{% static "/graph2.png" %}" alt="graph" style="height: 850px; width: 1150px;">
 
     <h2 style="text-align: center">Статистика по годам</h2>
     <table style="width: 100%; border-collapse: collapse">
@@ -169,3 +170,10 @@
     </table>
 </body>
 </html>
+
+
+
+
+
+
+{% endblock content %}

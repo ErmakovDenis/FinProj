@@ -2,18 +2,104 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <h1>текст</h1>
+    <style>
+        * {box-sizing: border-box; margin: 0;}
+        .widget {
+          padding: 20px 30px;
+          background: white;
+          font-family: 'Roboto', sans-serif;
+        }
+        .widget-title {
+          text-transform: uppercase;
+          letter-spacing: 2px;
+          color: #222;
+          font-size: 16px;
+          padding-left: 15px;
+          margin-bottom: 15px;
+          border-left: 2px solid #b99d61;
+        }
+        .widget-list {
+          padding: 0;
+          list-style: none;
+        }
+        .widget-list a:before {
+          content: "\2014";
+          margin-right: 14px;
+        }
+        .widget-list a {
+          text-decoration: none;
+          outline: none;
+          display: block;
+          padding: 6px 0;
+          letter-spacing: 1px;
+          font-weight: 300;
+          color: #444;
+          transition: .3s linear;
+        }
+        .widget-list a:hover {color: #b99d61;}
+    </style>
+
 </head>
 <body>
-    <div><a href="/">Главная</a> | <a href="/skills">Навыки</a> | <a href="/demand">Востребовательность</a>
-    | <a href="/geography">География</a>
-    | <a href="/last-vacansies">Последнии вакансии</a></div>
-    <h1>{% block header %}{% endblock header %}</h1>
-    <div>{% block content%}{% endblock content %}</div>
-    <div>Ермаков Денис</div>
+
+
+  <table border="1" bgcolor=#e8e3d4 width=100%>
+    <tr style="text-align:center">
+        <td colspan=2 style="color: #950000;">
+            Шаблон сайта-2
+        </td>
+    </tr>
+    <tr>
+        <td style="width : 20%; top: 0" >
+            <div class="widget" style="position: fixed; z-index: 1; top: 30px">
+                <ul class="widget-list">
+                    <li><a href="/">Главная</a></li>
+                    <li><a href="/demand">Востребовательность</a></li>
+                    <li><a href="/geography">География</a></li>
+                    <li><a href="/skills">Навыки</a></li>
+                    <li><a href="/last-vacansies">Последнии вакансии</a></li>
+                </ul>
+            </div>
+        </td>
+        <td bgcolor=#ebebeb>
+        {% block content %}
+            <h1>Backend-разработчик – профессия будущего!</h1>
+            Backend-разработчик — программист, который пишет серверный код, отвечает за реакцию ресурса на действия пользователя и выдачу информации. Работа бэкендера внешне незаметна: пользователь не думает, как устроен сайт изнутри. Но если серверный код написан с ошибками, он не будет нормально работать.
+Профессиональные навыки.
+            Требования зависят от сферы и уровня компании. В большинстве вакансий есть базовые условия. Бэкендеру нужно:
+            <ul>
+            <li>владеть несколькими языками программирования — C++ или C#, PHP, Python, GoLang, Java, Ruby;
+            <li>    уметь проектировать базы данных и писать запросы к ним — в MySQL или другой СУБД;
+            <li>понимать протоколы передачи информации между клиентом и сервером — HTTP и HTTPS;
+            <li>владеть инструментами сетевой безопасности;
+            <li>знать функционал серверов — NGINX, Apache и других;
+            <li>уметь подключать API;
+            <li>обладать навыками разработки приложений в популярных веб-фреймворках;
+            <li>иметь опыт юнит-тестирования;
+            <li>знать систему контроля версий Git;
+            <li>понимать базовые принципы frontend-разработки.
+            </ul>
+            <h1>Коротко о backend</h1>
+            Бэкенд-разработчик пишет серверный код. Отвечает за реакцию ресурса на действия пользователя и выдачу информации.
+    Backend’еры нужны везде, где используют сайты и приложения.
+    Senior-специалист должен знать несколько языков программирования. Самые востребованные — PHP, Java, Python, Ruby, C#, C++. А также знать и уметь работать с одной или несколькими СУБД.
+    Backend-разработчик зарабатывает в среднем от 60 000 ₽ до 465 000 ₽.
+    Сложно освоить профессию без программы обучения — легко запутаться в информации и бросить всё на полпути. Поэтому присмотритесь к курсам от практиков.
+
+            Выпускник курсов начинает с должности стажера в небольшой IT-компании или веб-студии. На первых порах не рассчитывайте на высокую зарплату. Главное — приобрести опыт работы в реальном проекте. После этого уже пробуйте силы в качестве специалиста уровня Junior. Вакансии ищите на сайтах hh.ru, Работа.ру, career.habr.com, headz.io, в разделе «Вакансии» на vc.ru.
+
+        {% endblock content %}
+        </td>
+    </tr>
+    <tr>
+        <td colspan=2 style="text-align: center; width : 100%">
+            Подвал сайта
+        </td>
+    </tr>
+  </table>
 </body>
 <footer>
-
+    Ермаков Денис
 </footer>
 
 </html>
