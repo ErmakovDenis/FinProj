@@ -2,8 +2,9 @@
 {% load static %}
 <title>Последнии вакансии</title>
 {% block content %}
+    <header class="head">АНАЛИЗ ПРОФЕССИИ BACKEND-РАЗРАБОТЧИК</header>
         {% for vacancy in vacansies %}
-            <div>
+            <div style="margin-left: 50px; margin-top: 100px">
                 <h2>{{ vacancy.name }}</h2>
                 <br>
                 <p><b>Зарплата:</b> {{ vacancy.salary }}</p>
@@ -16,4 +17,7 @@
                 <hr>
             </div>
         {% endfor %}
+    <footer class="foot">
+    Ермаков Денис Александрович РИ-210910
+</footer>
 {% endblock %}

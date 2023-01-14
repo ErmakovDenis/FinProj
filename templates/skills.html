@@ -1,4 +1,15 @@
 {% extends "main.html" %}
+{% load static %}
 {% block content %}
-    "Полнейший тильт навыки"
+    <header class="head">АНАЛИЗ ПРОФЕССИИ BACKEND-РАЗРАБОТЧИК</header>
+    <div style="margin-top: 75px">
+    {% for r in res %}
+        <ul>
+            <li><p>Ключевые навыки {{ r.0 }} года: {{ r.1 }}</p>
+        </ul>
+    {% endfor %}
+    </div>
+        <footer class="foot">
+    Ермаков Денис Александрович РИ-210910
+</footer>
 {% endblock content %}
