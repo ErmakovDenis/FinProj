@@ -3,3 +3,5 @@ venv/
 *.csv
 static
 skills_by_city
+data
+__pycache__

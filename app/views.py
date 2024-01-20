@@ -12,7 +12,7 @@ from concurrent.futures import ProcessPoolExecutor
 from multiprocessing import cpu_count
 
 from django.shortcuts import render
-#import multiprocessing
+import multiprocessing
 import os
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -93,8 +93,8 @@ class Solution:
         self.dynamics6 = dict(zip(data_of_file.head(10)["area_name"], data_of_file.head(10)["count"]))
 
     def get_statistic(self):
-        InputConnect(self.path_to_file, self.name_vacancy, self.dynamics1, self.dynamics2, self.dynamics3,
-                     self.dynamics4, self.dynamics5, self.dynamics6)
+        #InputConnect(self.path_to_file, self.name_vacancy, self.dynamics1, self.dynamics2, self.dynamics3,
+        #             self.dynamics4, self.dynamics5, self.dynamics6)
         return self.dynamics1, self.dynamics2, self.dynamics3, self.dynamics4, self.dynamics5, self.dynamics6
 
 
@@ -188,12 +188,16 @@ class Report:
 
 
 def demand(request):
-    filename = '/home/ermakov/PycharmProjects/FinProject/templates/data/vacancies_with_skills.csv'
-    name_vacancy = "Backend"
+    filename = '/home/ermakov/PycharmProjects/FinProj/templates/data/vacancies.csv'
+    name_vacancy = "Администратор баз данных"
+
     solve = Solution(filename, name_vacancy)
     solve.split_by_year()
     solve.get_dynamics()
     dynamics1, dynamics2, dynamics3, dynamics4, dynamics5, dynamics6 = solve.get_statistic()
+
+    #InputConnect(filename, name_vacancy, dynamics1, dynamics2, dynamics3, dynamics4, dynamics5, dynamics6)
+
     dynamics = []
 
     for year in dynamics2.keys():
@@ -235,8 +239,9 @@ def main(request):
 
 
 def geography(request):
-    filename = '/home/ermakov/PycharmProjects/FinProject/templates/data/vacancies_with_skills.csv'
-    name_vacancy = "Backend"
+    filename = '/home/ermakov/PycharmProjects/FinProj/templates/data/vacancies.csv'
+    name_vacancy = "Администратор баз данных"
+
     solve = Solution(filename, name_vacancy)
     solve.get_dynamics()
     dynamics1, dynamics2, dynamics3, dynamics4, dynamics5, dynamics6 = solve.get_statistic()
@@ -251,8 +256,8 @@ def geography(request):
 
 
 
-vacancy_choices = '|'.join(['backend'])
-data = pd.read_csv('/home/ermakov/PycharmProjects/FinProject/templates/data/vacancies_with_skills.csv', usecols=['name', 'key_skills', 'published_at'])
+vacancy_choices = '|'.join(['баз данных', 'оператор баз данных', 'базы данных', 'oracle', 'mysql', 'data base', 'database', 'dba', 'bd', 'бд', 'базами данны'])
+data = pd.read_csv('/home/ermakov/PycharmProjects/FinProj/templates/data/vacancies.csv', usecols=['name', 'key_skills', 'published_at'])
 
 data = data[data['name'].str.contains(vacancy_choices,case=False)]
 data = data[data['key_skills'].notnull()]
@@ -335,9 +340,9 @@ def clean_vacancy(vacancy):
 def get_vacancies():
     try:
         data = []
-        info = requests.get('https://api.hh.ru/vacancies?text=%22backend%22&specialization=1&per_page=100').json()
+        info = requests.get('https://api.hh.ru/vacancies?text=%22аналитик баз данных%22&specialization=1&per_page=100').json()
         for row in info['items']:
-            if row['name'].lower().__contains__('backend') and not row['salary'] is None:
+            if row['name'].lower().__contains__('аналитик баз данных') and not row['salary'] is None:
                 data.append({'id': row['id'], 'published_at': row['published_at']})
         data = sorted(data, key=lambda x: x['published_at'])
         vacancies = []
